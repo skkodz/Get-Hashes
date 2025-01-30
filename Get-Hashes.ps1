@@ -1,10 +1,12 @@
 ##################################################################################
 # Get-Hashes.ps1
-# Version: 1.2
+# Version: 1.3
 # Author: S Kodz
-# Last Updated 07 Oct 2019 by S Kodz
+# Last Updated 30 Jan 2025 by S Kodz
 #
 # Version History
+#   Version 1.3 - 30 Jan 2025 by S Kodz
+#     Added command executed into the logging output.
 #   Version 1.2 - 07 Oct 2019 by S Kodz
 #     Added | Format-String -Width 4096 as long file paths were still being
 #     truncated in the output file to the console width.
@@ -52,7 +54,7 @@ Param(
     
   if ( $($KeyPress.Character) -eq 'O' ) { "$StartTime : Script Starting" | Out-File -FilePath $OutFile }
   elseif ( ( $($KeyPress.Character) -eq 'A' ) -or ( $($KeyPress.Character) -eq $null ) )
-    { "$StartTime : Script Starting" | Out-File -FilePath $OutFile -Append }
+    { "$StartTime : Script Starting`nCommand Executed: Get-Hashes.ps1 -Algorithm $Algorithm -Directory $Directory -OutFile $OutFile" | Out-File -FilePath $OutFile -Append }
   else
     { Throw "ERROR: Unknown value detected - terminating." }
 
